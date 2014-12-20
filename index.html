@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Drug Concentration Predictor</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Drug Concentration Predictor">
+  <meta name="author" content="Gopinathan Balaji">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/prettify/css/twitter-bootstrap.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Drug Concentration Predictor</h1>
+    <h2>Developing Data Products</h2>
+    <p>Gopinathan Balaji<br/>Dec 2014</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Introduction</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Presenting a Drug Concentration Predictor</h3>
+
+<ul>
+<li>Given a dose (in milligrams) of the drug introduced to a Subject,
+and the hours since the dose was introduced,</li>
+<li>Predicts the drug concentration in the blood system (as mg/L) at the
+hour input.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Input and Output</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Input</h3>
+
+<ul>
+<li>Friendly sliders to input dose and hours. </li>
+<li>Range and data type validated.</li>
+</ul>
+
+<h3>Output</h3>
+
+<ul>
+<li>The input provided</li>
+<li>A plot of the information in the source dataset.
+
+<ul>
+<li>Hours in X-axis (hours)</li>
+<li>Drug concentration in Y-axis (mg/L)</li>
+</ul></li>
+<li>A blue line overlay on the plot to indicate the fit produced using a Linear Model</li>
+<li>A red vertical line overlay on the plot to indicate the hours input by the user</li>
+<li>The prediction from the model as per the model.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Methodology</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>A <em>simplified</em> version of the <code>datasets::Theoph</code> dataset was used to build the model. </p>
+
+<ul>
+<li>The simplification was to collapse two variables: <code>simTh$GivenDose &lt;- Theoph$Wt * Theoph$Dose</code>.</li>
+</ul></li>
+<li><p>A fit using formula = <code>lmTh &lt;- lm(conc ~ Time + GivenDose)</code> was done. Summary of the residuals so obtained are:</p></li>
+</ul>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## -5.7120 -1.4360  0.3952  0.0000  1.8050  5.8150
+</code></pre>
+
+<ul>
+<li>For sample inputs: <code>GivenDose=315, Time=4</code>, prediction for <code>conc</code> (using the <code>predict</code> function with <code>interval=&quot;prediction&quot;,type=&quot;response&quot;</code>) is:</li>
+</ul>
+
+<pre><code>##        fit        lwr      upr
+## 1 5.197729 -0.2711659 10.66662
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Other Notes</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>The Shiny app is available at <a href="https://gb-ddp.shinyapps.io/ddp-shiny">https://gb-ddp.shinyapps.io/ddp-shiny</a>.</li>
+<li>The code for the Shiny app is available at <a href="https://github.com/GopinathanB/ddp-shiny">https://github.com/GopinathanB/ddp-shiny</a>.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Introduction'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Input and Output'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Methodology'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Other Notes'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- Google Prettify -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/188.0.0/prettify.js"></script>
+  <script src='libraries/highlighters/prettify/js/lang-r.js'></script>
+  <script>
+    var pres = document.getElementsByTagName("pre");
+    for (var i=0; i < pres.length; ++i) {
+      pres[i].className = "prettyprint linenums";
+    }
+    prettyPrint();
+  </script>
+  <!-- End Google Prettify --> 
+  </html>
