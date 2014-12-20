@@ -66,3 +66,5 @@ hour input.
 
 1. The Shiny app is available at <https://gb-ddp.shinyapps.io/ddp-shiny>.
 2. The code for the Shiny app is available at <https://github.com/GopinathanB/ddp-shiny>.
+3. The help documentation for the Shiny app is accessible from within the app itself. It can also be accessed at <https://gb-ddp.shinyapps.io/ddp-shiny/ddp-help-documentation.html>.
+4. The code for the slidify project (that produced this presentation) is available at <https://github.com/GopinathanB/ddp-shiny>.
